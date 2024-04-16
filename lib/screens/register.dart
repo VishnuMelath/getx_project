@@ -116,7 +116,7 @@ class Resgister extends StatelessWidget {
                                 image: image.string,
                                 place: placecontroller.text);
                             await controller.updateStudent(student1,key);
-                             Get.back();Get.back();
+                             Get.back();
                           Get.snackbar('Updated succesfully', '',snackPosition: SnackPosition.BOTTOM);
                           }
 

@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:getx_project/controllers/student_controller.dart';
 import 'package:getx_project/data_model/student_model.dart';
@@ -85,7 +83,13 @@ class HomeScreen extends StatelessWidget {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           GestureDetector(
-                                              onTap: () {},
+                                              onTap: () {
+                                                Get.to(
+                                                    () => Resgister(
+                                                        student: student,
+                                                        controller: controller),
+                                                    arguments: 'edit');
+                                              },
                                               child: const Icon(Icons.edit)),
                                           const SizedBox(
                                             width: 20,

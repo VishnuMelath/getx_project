@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:getx_project/database/dbservices.dart';
 
 import '../data_model/student_model.dart';

@@ -62,7 +62,7 @@ class Profile extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextButton(onPressed: () {
-                        Get.to(()=>Resgister(student: student, controller: controller),arguments: 'edit');
+                        Get.off(()=>Resgister(student: student, controller: controller),arguments: 'edit');
 
                       }, child: const Text('edit')),
                       TextButton(
