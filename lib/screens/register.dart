@@ -8,9 +8,9 @@ import 'package:getx_project/widgets/custom_textfield.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Resgister extends StatelessWidget {
- final StudentController controller;
+  final StudentController controller;
   final Student student;
-  const Resgister({super.key, required this.student,required this.controller});
+  const Resgister({super.key, required this.student, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class Resgister extends StatelessWidget {
         TextEditingController(text: student.place);
     GlobalKey<FormState> formkey = GlobalKey();
 
-    var image = ''.obs;
+    var image = student.image.obs;
     return Scaffold(
       appBar: AppBar(
         title: Text(Get.arguments),
@@ -98,15 +98,29 @@ class Resgister extends StatelessWidget {
                   ElevatedButton(
                       onPressed: () async {
                         if (formkey.currentState!.validate()) {
-                          await controller.insert(Student(
-                              name: namecontroller.text,
-                              age: agecontroller.text,
-                              department: departmentcontroller.text,
-                              image: image.string,
-                              place: placecontroller.text));
+                          if (Get.arguments == 'Register') {
+                            await controller.insert(Student(
+                                name: namecontroller.text.toLowerCase(),
+                                age: agecontroller.text,
+                                department: departmentcontroller.text,
+                                image: image.string,
+                                place: placecontroller.text));
+                                 Get.back();
+                          Get.snackbar('Inserted succesfully', '',snackPosition: SnackPosition.BOTTOM);
+                          } else {
+                            int key=student.key;
+                            var student1=Student(
+                                name: namecontroller.text.toLowerCase(),
+                                age: agecontroller.text,
+                                department: departmentcontroller.text,
+                                image: image.string,
+                                place: placecontroller.text);
+                            await controller.updateStudent(student1,key);
+                             Get.back();Get.back();
+                          Get.snackbar('Updated succesfully', '',snackPosition: SnackPosition.BOTTOM);
+                          }
 
-                          Get.back();
-                          Get.snackbar('Inserted succesfully', 'helo');
+                         
                         }
                       },
                       child: const Text('submit')),
